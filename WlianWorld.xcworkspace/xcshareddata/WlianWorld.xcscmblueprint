@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0da8cc3c-f891-452c-9500-117c2a1edae8++9508",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "0da8cc3c-f891-452c-9500-117c2a1edae8++9508" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0da8cc3c-f891-452c-9500-117c2a1edae8++9508" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "462BA418-71E6-4035-B15A-686317AAFD32",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0da8cc3c-f891-452c-9500-117c2a1edae8++9508" : "WlianWorld\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "WlianWorld",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "WlianWorld.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.0.27",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0da8cc3c-f891-452c-9500-117c2a1edae8++9508"
+    }
+  ]
+}

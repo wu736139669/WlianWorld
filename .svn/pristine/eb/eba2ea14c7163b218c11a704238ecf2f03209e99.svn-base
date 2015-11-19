@@ -1,0 +1,33 @@
+//
+//  CollectionInquiryViewCell.m
+//  WLTX
+//
+//  Created by 黄伟斌  on 15/11/13.
+//  Copyright (c) 2015年 黄伟斌 . All rights reserved.
+//
+
+#import "CollectionInquiryViewCell.h"
+#define kNibName @"CollectionInquiryViewCell"
+
+@implementation CollectionInquiryViewCell
+
+- (void)awakeFromNib {
+    // Initialization code
+}
+
++ (instancetype)cellWithTableView:(UITableView *)tableView
+{
+    CollectionInquiryViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:kNibName];
+    if (!cell) {
+        cell = [[NSBundle mainBundle]loadNibNamed:kNibName owner:nil options:nil][0];
+    }
+    return cell;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

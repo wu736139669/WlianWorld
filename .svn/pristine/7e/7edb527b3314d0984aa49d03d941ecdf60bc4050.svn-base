@@ -1,0 +1,155 @@
+//
+//  HairpinViewController.m
+//  WLTX
+//
+//  Created by 黄伟斌  on 15/11/13.
+//  Copyright (c) 2015年 黄伟斌 . All rights reserved.
+//
+
+#import "SendCardViewController.h"
+#import "SelectAlterView.h"
+#import "SendCardRecordViewController.h"
+#import "Defines.h"
+
+@interface SendCardViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    UITableView *tableView;
+    UITextField *mobileTelephone;
+    UITextField *service;
+    UIButton *confirmationCard;
+    UIButton *choiceButton;
+    SendCardRecordViewController *scvc;
+    UILabel *label;
+    SelectAlterView *view;
+}
+@end
+
+@implementation SendCardViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resultStr:) name:@"getStr" object:nil];
+    self.title = @"发卡";
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *rightBtnImage = [UIImage imageNamed:@"icon48.search.png"];
+    [rightBtn setBackgroundImage:rightBtnImage forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(goToSendCardRecord) forControlEvents:UIControlEventTouchUpInside];
+    rightBtn.frame = CGRectMake(0, 0, 30, 30);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:rightBtn] ;
+    self.navigationItem.rightBarButtonItem = backButton;
+    
+    view = [[SelectAlterView alloc] initWithData:@[@"1",@"2"]];
+    view.hidden = YES;
+    [self initTableView];
+    [self initVerificationButton];
+    [self.view addSubview:view];
+    // Do any additional setup after loading the view.
+}
+
+
+- (void)initTableView
+{
+    tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    tableView.backgroundColor = [UIColor whiteColor];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.tableFooterView = [[UIView alloc] init];
+    tableView.scrollEnabled = NO;
+    [self.view addSubview:tableView];
+}
+
+- (void)initVerificationButton
+{
+    confirmationCard = [UIButton buttonWithType:UIButtonTypeCustom];
+    [confirmationCard setTitle:@"确认发卡" forState:UIControlStateNormal];
+    confirmationCard.frame = CGRectMake(10, 200, kScreenWidth - 20, 45);
+    confirmationCard.tintColor = [UIColor whiteColor];
+    [confirmationCard addTarget:self action:@selector(confirmationSendCard) forControlEvents:UIControlEventTouchUpInside];
+    confirmationCard.backgroundColor = [UIColor redColor];
+    label = [[UILabel alloc] initWithFrame:CGRectMake(20, 260, kScreenWidth - 40, 45)];
+    label.textColor = [UIColor redColor];
+    label.text = @"兑换码(及附赠五折美食权益)将以短信形式发送到此手机号";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 2;
+    [self.view addSubview:label];
+    [self.view addSubview:confirmationCard];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView1 dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+    }
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"手机号";
+        mobileTelephone = [[UITextField alloc] initWithFrame:CGRectMake(100, 10, kScreenWidth - 80, 30)];
+        mobileTelephone.keyboardType=UIKeyboardTypeNumberPad;
+        mobileTelephone.placeholder = @"兑换码将发送至此手机";
+        [cell.contentView addSubview:mobileTelephone];
+    }
+    if (indexPath.row == 1) {
+        cell.textLabel.text = @"服务类型";
+        service = [[UITextField alloc] initWithFrame:CGRectMake(100, 10, kScreenWidth - 150, 30)];
+        service.placeholder = @"请选择服务类型";
+        service.userInteractionEnabled = NO;
+        service.backgroundColor = [UIColor  yellowColor];
+        [cell.contentView addSubview:service];
+        
+        choiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        choiceButton.frame = CGRectMake(kScreenWidth - 40, 10, 30, 30);
+        [choiceButton setImage:[UIImage imageNamed:@"icon48.scan.png"] forState:UIControlStateNormal];
+        choiceButton.backgroundColor = [UIColor redColor];
+        [cell.contentView addSubview:choiceButton];
+        
+    
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 1) {
+        [view showAnimate];
+        [self.view endEditing:YES];
+    }
+}
+
+- (void)goToSendCardRecord
+{
+    SendCardRecordViewController *scrVC = [[SendCardRecordViewController alloc] init];
+    [self.navigationController pushViewController:scrVC animated:YES];
+}
+
+- (void)resultStr:(NSNotification *)info
+{
+    NSDictionary *dic = [info userInfo];
+    NSString *str = dic[@"String"];
+    service.text = str;
+}
+
+- (void)confirmationSendCard
+{
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

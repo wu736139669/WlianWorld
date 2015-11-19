@@ -1,0 +1,13 @@
+//
+//  DetailAppointedOrderViewController.h
+//  WLTX
+//
+//  Created by 黄伟斌  on 15/11/16.
+//  Copyright (c) 2015年 黄伟斌 . All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface DetailAppointedOrderViewController : UIViewController
+
+@end

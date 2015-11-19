@@ -1,0 +1,138 @@
+//
+//  MenuViewController.m
+//  WLTX
+//
+//  Created by 黄伟斌  on 15/11/12.
+//  Copyright (c) 2015年 黄伟斌 . All rights reserved.
+//
+
+#import "MenuViewController.h"
+#import "CustomCollectionViewCell.h"
+#import "CollectionInquiryViewController.h"
+#import "CancelVerificationViewController.h"
+#import "InquiryViewController.h"
+#import "SendCardViewController.h"
+#import "ViewController.h"
+#import "Defines.h"
+
+@interface MenuViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+{
+    UICollectionView *collectionView;
+    NSArray *imageNameDataArray;
+    NSArray *nameStringDataArray;
+}
+@end
+
+@implementation MenuViewController
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    ViewController *vc = [[ViewController alloc] init];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self presentViewController:vc animated:YES completion:nil];
+    });
+    self.navigationItem.title = @"微连天下";
+    [self initData];
+    [self initCollectionView];
+}
+
+- (void)initCollectionView
+{
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.itemSize = CGSizeMake(kScreenWidth / 3 - 10, 100);   layout.minimumLineSpacing = 10;
+    layout.minimumInteritemSpacing = 10;
+    collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+    collectionView.backgroundColor = [UIColor whiteColor];
+    [collectionView registerNib:[UINib nibWithNibName:kc bundle:nil] forCellWithReuseIdentifier:kc];
+    collectionView.dataSource = self;
+    collectionView.delegate = self;
+    [self.view addSubview:collectionView];
+}
+
+- (void)initData
+{
+    imageNameDataArray = @[@"icon72.charge.png",
+                           @"icon72.valid.png",
+                           @"icon72.card.png",
+                           @"icon72.search.png",
+                           @"icon72.update.png",
+                           @"icon72.logout.png"];
+    nameStringDataArray = @[@"收款查询",
+                            @"核销",
+                            @"发卡",
+                            @"查询",
+                            @"版本",
+                            @"注销"];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 6;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView1 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CustomCollectionViewCell *cell = [collectionView1 dequeueReusableCellWithReuseIdentifier:kc forIndexPath:indexPath];
+    cell.imageNameStr = imageNameDataArray[indexPath.row];
+    cell.titleNameString = nameStringDataArray[indexPath.row];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+        {
+            CollectionInquiryViewController *CIVC = [[CollectionInquiryViewController alloc] init];
+            [self.navigationController pushViewController:CIVC animated:YES];
+        }
+            break;
+        case 1:
+        {
+            CancelVerificationViewController *CVVC = [[CancelVerificationViewController alloc] init];
+            [self.navigationController pushViewController:CVVC animated:YES];
+        }
+            break;
+        case 2:
+        {
+            SendCardViewController *HVCV = [[SendCardViewController alloc] init];
+            [self.navigationController pushViewController:HVCV animated:YES];
+        
+        }
+            break;
+        case 3:
+        {
+            InquiryViewController *IVC = [[InquiryViewController alloc] init];
+            [self.navigationController pushViewController:IVC animated:YES];
+        
+        }
+            break;
+        case 4:
+        {}
+            break;
+        case 5:
+        {}
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

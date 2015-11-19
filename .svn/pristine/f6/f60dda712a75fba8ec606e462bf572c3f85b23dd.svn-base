@@ -1,0 +1,106 @@
+//
+//  DetailSendCardViewController.m
+//  WlianWorld
+//
+//  Created by 黄伟斌  on 15/11/16.
+//  Copyright (c) 2015年 ash. All rights reserved.
+//
+
+#import "DetailSendCardViewController.h"
+#import "DetailAppointedOrderTableViewCell.h"
+#import "Defines.h"
+
+@interface DetailSendCardViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    UITableView *tableView;
+}
+
+
+@end
+
+@implementation DetailSendCardViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"发卡详情";
+    
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *rightBtnImage = [UIImage imageNamed:@"icon72.home.png"];
+    [rightBtn setBackgroundImage:rightBtnImage forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(goToHome) forControlEvents:UIControlEventTouchUpInside];
+    rightBtn.frame = CGRectMake(0, 0, 30, 30);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:rightBtn] ;
+    self.navigationItem.rightBarButtonItem = backButton;
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self initTableView];
+    // Do any additional setup after loading the view.
+}
+
+- (void)initTableView
+{
+    tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    tableView.tableFooterView = [[UIView alloc] init];
+    [self.view addSubview:tableView];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DetailAppointedOrderTableViewCell *cell = [DetailAppointedOrderTableViewCell cellWithTableView:tableView1];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(6, 6, 90, 30)];
+    label1.text = @"手机号";
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(116, 5, kScreenWidth - 116, 30)];
+    label2.text = @"15698302832";
+    [titleView addSubview:label1];
+    [titleView addSubview:label2];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, 2)];
+    line.backgroundColor = [UIColor redColor];
+    [titleView addSubview:line];
+    return titleView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
+
+- (void)goToHome
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

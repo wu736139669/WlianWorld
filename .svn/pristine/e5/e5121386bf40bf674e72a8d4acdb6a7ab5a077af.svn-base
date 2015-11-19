@@ -1,0 +1,114 @@
+//
+//  CancelVerificationViewController.m
+//  WLTX
+//
+//  Created by 黄伟斌  on 15/11/13.
+//  Copyright (c) 2015年 黄伟斌 . All rights reserved.
+//
+
+#import "CancelVerificationViewController.h"
+#import "Defines.h"
+
+@interface CancelVerificationViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    UITextField *digitalCode;
+    UITextField *totalConsumption;
+    UITextField *purchaseAmount;
+    UIButton *Verification;
+    UITableView *tableView;
+
+}
+@end
+
+@implementation CancelVerificationViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"核销";
+    [self initTableView];
+    [self initVerificationButton];
+    // Do any additional setup after loading the view.
+}
+
+- (void)initTableView
+{
+    tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    tableView.backgroundColor = [UIColor whiteColor];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.tableFooterView = [[UIView alloc] init];
+    tableView.scrollEnabled = NO;
+    [self.view addSubview:tableView];
+}
+
+- (void)initVerificationButton
+{
+    Verification = [UIButton buttonWithType:UIButtonTypeSystem];
+    Verification.frame = CGRectMake(10, 240, kScreenWidth - 20, 45);
+    [Verification setTitle:@"确认核销" forState:UIControlStateNormal];
+    Verification.tintColor = [UIColor whiteColor];
+    //[Verification addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
+    Verification.backgroundColor = [UIColor redColor];
+    [self.view addSubview:Verification];
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView1 dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+    }
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"核销码";
+        digitalCode = [[UITextField alloc] initWithFrame:CGRectMake(100, 10, kScreenWidth - 80, 30)];
+        digitalCode.keyboardType=UIKeyboardTypeNumberPad;
+        digitalCode.placeholder = @"请输入数字核销码";
+        [cell.contentView addSubview:digitalCode];
+    }
+    if (indexPath.row == 1) {
+        cell.textLabel.text = @"消费总额";
+        totalConsumption = [[UITextField alloc] initWithFrame:CGRectMake(100, 10, kScreenWidth - 80, 30)];
+        totalConsumption.keyboardType=UIKeyboardTypeNumberPad;
+        totalConsumption.placeholder = @"请输入消费总额";
+        [cell.contentView addSubview:totalConsumption];
+    }
+    if (indexPath.row == 2) {
+        cell.textLabel.text = @"实收金额";
+        purchaseAmount = [[UITextField alloc] initWithFrame:CGRectMake(100, 10, kScreenWidth - 80, 30)];
+        purchaseAmount.keyboardType=UIKeyboardTypeNumberPad;
+        purchaseAmount.placeholder = @"请输入实收金额";
+        [cell.contentView addSubview:purchaseAmount];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

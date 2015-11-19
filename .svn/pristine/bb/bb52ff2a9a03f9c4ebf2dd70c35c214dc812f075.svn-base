@@ -1,0 +1,18 @@
+//
+//  LoginViewModel.h
+//  WlianWorld
+//
+//  Created by xmfish on 15/11/13.
+//  Copyright © 2015年 ash. All rights reserved.
+//
+
+#import "BaseViewModel.h"
+
+@interface LoginViewModel : BaseViewModel
+
+@property (nonatomic,strong) NSString* name;
+
++(BaseEntity*)requireWithAccount:(NSString*)account withPassword:(NSString*)password;
+
+
+@end

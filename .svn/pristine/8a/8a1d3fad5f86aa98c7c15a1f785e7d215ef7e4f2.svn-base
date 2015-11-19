@@ -1,0 +1,30 @@
+//
+//  VerificationOrderModel.h
+//  WlianWorld
+//
+//  Created by xmfish on 15/11/17.
+//  Copyright © 2015年 ash. All rights reserved.
+//
+
+#import "BaseModel.h"
+
+typedef enum {
+        VerificationOrderType = 2,
+}OrderType;
+
+
+@interface VerificationOrderInfo : MTLModel<MTLJSONSerializing>
+@property (nonatomic,readonly)NSString* order_id;
+@property (nonatomic, readonly) NSString *real_price;
+@property (nonatomic, readonly) NSString *pay_time;
+@property (nonatomic, readonly) NSString *status_str;
+@end
+
+@interface VerificationOrderModel : BaseModel
+
+@property (nonatomic,readonly)NSNumber* count;
+@property (nonatomic,readonly)NSArray* orderArr;
+
+- (RACSignal*)loadSignalWithType:(OrderType)type withPage:(NSInteger)page withPageSize:(NSInteger)pageSize;
+
+@end
