@@ -91,23 +91,25 @@ Pod::Spec.new do |s|
   s.source_files = 'WlianWorld/Model/*','WlianWorld/Util/**/*','WlianWorld/View/*','WlianWorld/ViewModel/*','WlianWorld/Config/*'
   # s.exclude_files = "Classes/Exclude"
 
-  s.public_header_files = 'WlianWorld/Config/*.{h}','WlianWorld/Model/*.{h}','WlianWorld/Util/*.{h}'
+  s.prefix_header_file = 'WlianWorld/PrefixHeader.pch'
 
 
   s.frameworks = "UIKit"
+  s.dependency 'Mantle'
   s.dependency 'AFNetworking', '~> 2.5.4'
   s.dependency 'DTCoreText', '~>1.6.17'
-  s.dependency 'EGOCache', '~>2.13'
+  s.dependency 'EGOCache'
   s.dependency 'Godzippa', '~>1.1.0'
   s.dependency 'MBProgressHUD', '~>0.9.2'
   s.dependency 'MJRefresh', '~>3.1.0'
   s.dependency 'Reachability', '~>3.2'
   s.dependency 'ReactiveCocoa', '~>2.5'
   s.dependency 'SDWebImage', '~>3.7.4'
-  s.dependency 'SecureUDID', '~>1.1'
+  # s.dependency 'SecureUDID', '~>1.1'
   s.dependency 'STableViewController', '~>0.0.1'
   s.dependency 'SVWebViewController', '~>1.0'
   s.dependency 'SBJson', '~>4.0.2'
+
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  A list of resources included with the Pod. These are copied into the

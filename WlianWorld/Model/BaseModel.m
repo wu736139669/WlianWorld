@@ -7,40 +7,41 @@
 //
 
 #import "BaseModel.h"
-
 @implementation BaseModel
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
++ (NSDictionary*)JSONKeyPathsByPropertyKey
+{
     return @{
-             //             @"errCode": @"ret",
-             @"errorCode": @"errorCode",
-             @"errorMessage": @"errorMessage",
-             };
+        //             @"errCode": @"ret",
+        @"errorCode" : @"errorCode",
+        @"errorMessage" : @"errorMessage",
+    };
 }
 
-+ (NSValueTransformer *)errorCodeJSONTransformer {
-    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value,BOOL *success, NSError *__autoreleasing *error) {
-        
-        NSNumber *num = value;
-        
-        NSString *tempStr = [NSString stringWithFormat:@"%@", num];
-        
++ (NSValueTransformer*)errorCodeJSONTransformer
+{
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL* success, NSError* __autoreleasing* error) {
+
+        NSNumber* num = value;
+
+        NSString* tempStr = [NSString stringWithFormat:@"%@", num];
+
         return tempStr;
-        
-    } reverseBlock:^id(id value,BOOL *success, NSError *__autoreleasing *error) {
-        
-        NSString *tempStr = value;
-        
-        NSNumber *tempNum = @(tempStr.integerValue);
-        
-        return tempNum;
-        
-    }];
+
+    }
+        reverseBlock:^id(id value, BOOL* success, NSError* __autoreleasing* error) {
+
+            NSString* tempStr = value;
+
+            NSNumber* tempNum = @(tempStr.integerValue);
+
+            return tempNum;
+
+        }];
 }
-- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error
+- (instancetype)initWithDictionary:(NSDictionary*)dictionaryValue error:(NSError**)error
 {
     self = [super initWithDictionary:dictionaryValue error:error];
-    if (self != nil)
-    {
+    if (self != nil) {
     }
     return self;
 }

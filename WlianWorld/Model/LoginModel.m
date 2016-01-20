@@ -6,6 +6,8 @@
 //  Copyright © 2015年 ash. All rights reserved.
 //
 
+#import "BaseEntity.h"
+#import "BaseWLService.h"
 #import "LoginModel.h"
 #import "LoginViewModel.h"
 @implementation LoginModel
