@@ -1,45 +1,30 @@
-{
-  "name": "WlianWorld",
-  "version": "1.0",
-  "summary": "WlianWorld",
-  "description": "WlianWorld, 微连天下",
-  "homepage": "http://www.xiaoyu.com",
-  "license": "MIT",
-  "authors": {
-    "haha": "736139669@qq.com"
-  },
-  "source": {
-    "git": "git@github.com:wu736139669/WlianWorld.git"
-  },
-  "platforms": {
-    "ios": "7.0"
-  },
-  "source_files": [
-    "WlianWorld/Model/*.{h,m}",
-    "WlianWorld/Util/*/*.{h,m}",
-    "WlianWorld/View/*/*/*.{h,m}",
-    "WlianWorld/Config/*/*/*/*.{h,m}",
-    "WlianWorld/ViewModel/*.{h,m}"
-  ],
-  "resources": [
-    "WlianWorld/Resources/*.{xib,json,png,jpg,gif,js}",
-  ],
-  "requires_arc": true,
-  "dependencies": {
-    "Reachability":[],
-    "SDWebImage":[],
-    "DTCoreText":[],
-    "STableViewController":[],
-    "MBProgressHUD":[],
-    "AFNetworking":[],
-    "Mantle":[],
-    "Godzippa":[],
-    "SecureUDID":[],
-    "EGOCache":[],
-    "MJRefresh":[],
-    "SVWebViewController":[],
-    "ReactiveCocoa":[],
-    "IQKeyboardManager":[],
-  }
-
+Pod::Spec.new do |spec|
+spec.name             = "WlianWorld"
+spec.version          = "1.0.0"
+spec.summary          = "WlianWorld, 微连天下"
+spec.homepage         = "https://github.com/wu736139669"
+spec.license          = { :type => 'MIT', :file => 'LICENSE' }
+spec.author           = { "wushenghua" => "736139669@qq.com.com" }
+spec.source           = { :git => "https://github.com/wu736139669/WlianWorld.git", :tag => "1.0.0" }
+spec.platform     = :ios, "7.0"
+spec.requires_arc = true
+spec.source_files = 'WlianWorld/Model/*,WlianWorld/Util/**/*,WlianWorld/View/*,WlianWorld/ViewModel/*'
+spec.resource_bundles = {
+    'Resources' => ['WlianWorld/Resource/*.{xib,json,png,jpg,gif,js}']
 }
+spec.frameworks = "UIKit"
+spec.dependency 'AFNetworking', '~> 2.5.4'
+spec.dependency 'DTCoreText', '~>1.6.17'
+spec.dependency 'EGOCache', '~>2.13'
+spec.dependency 'Godzippa', '~>1.1.0'
+spec.dependency 'MBProgressHUD', '~>0.9.2'
+spec.dependency 'MJRefresh', '~>3.1.0'
+spec.dependency 'Reachability', '~>3.2'
+spec.dependency 'ReactiveCocoa', '~>2.5'
+spec.dependency 'SDWebImage', '~>3.7.4'
+spec.dependency 'SecureUDID', '~>1.1'
+spec.dependency 'STableViewController', '~>0.0.1'
+spec.dependency 'SVWebViewController', '~>1.0'
+spec.dependency 'SBJson', '~>4.0.2 
+
+end
