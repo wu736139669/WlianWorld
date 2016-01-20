@@ -1,0 +1,45 @@
+{
+  "name": "WlianWorld",
+  "version": "1.0",
+  "summary": "WlianWorld",
+  "description": "WlianWorld, 微连天下",
+  "homepage": "http://www.xiaoyu.com",
+  "license": "MIT",
+  "authors": {
+    "haha": "736139669@qq.com"
+  },
+  "source": {
+    "git": "git@github.com:wu736139669/WlianWorld.git"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source_files": [
+    "WlianWorld/Model/*.{h,m}",
+    "WlianWorld/Util/*/*.{h,m}",
+    "WlianWorld/View/*/*/*.{h,m}",
+    "WlianWorld/Config/*/*/*/*.{h,m}",
+    "WlianWorld/ViewModel/*.{h,m}"
+  ],
+  "resources": [
+    "WlianWorld/Resources/*.{xib,json,png,jpg,gif,js}",
+  ],
+  "requires_arc": true,
+  "dependencies": {
+    "Reachability":[],
+    "SDWebImage":[],
+    "DTCoreText":[],
+    "STableViewController":[],
+    "MBProgressHUD":[],
+    "AFNetworking":[],
+    "Mantle":[],
+    "Godzippa":[],
+    "SecureUDID":[],
+    "EGOCache":[],
+    "MJRefresh":[],
+    "SVWebViewController":[],
+    "ReactiveCocoa":[],
+    "IQKeyboardManager":[],
+  }
+
+}
