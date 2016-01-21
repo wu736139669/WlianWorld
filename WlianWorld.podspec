@@ -97,7 +97,7 @@ s.source_files = 'WlianWorld/Model/*.{h,m}','WlianWorld/Util/**/*.{h,m}','WlianW
   s.frameworks = "UIKit"
   s.dependency 'Mantle'
   s.dependency 'AFNetworking', '~> 2.5.4'
-  s.dependency 'DTCoreText', '~>1.6.17'
+  # s.dependency 'DTCoreText', '~>1.6.17'
   s.dependency 'EGOCache'
   s.dependency 'Godzippa', '~>1.1.0'
   s.dependency 'MBProgressHUD', '~>0.9.2'
