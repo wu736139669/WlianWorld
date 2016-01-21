@@ -88,10 +88,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files = 'WlianWorld/Model/*','WlianWorld/Util/**/*','WlianWorld/View/*','WlianWorld/ViewModel/*','WlianWorld/Config/*'
+s.source_files = 'WlianWorld/Model/*.{h,m}','WlianWorld/Util/**/*.{h,m}','WlianWorld/View/*.{h,m}','WlianWorld/ViewModel/*.{h,m}','WlianWorld/Config/*.{h,m}'
   # s.exclude_files = "Classes/Exclude"
 
-  s.prefix_header_file = 'WlianWorld/PrefixHeader.pch'
+  s.resources = 'WlianWorld/View/*.xib','WlianWorld/Resource/*'
 
 
   s.frameworks = "UIKit"
