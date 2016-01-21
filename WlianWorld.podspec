@@ -92,7 +92,7 @@ s.source_files = 'WlianWorld/Model/*.{h,m}','WlianWorld/Util/**/*.{h,m}','WlianW
   # s.exclude_files = "Classes/Exclude"
 
   s.resources = 'WlianWorld/View/*.xib','WlianWorld/Resource/*'
-
+  s.prefix_header_file = 'WlianWorld/PrefixHeader.pch'
 
   s.frameworks = "UIKit"
   s.dependency 'Mantle'
